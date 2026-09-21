@@ -24,6 +24,7 @@ export type WorkCase = {
   kind: 'professional' | 'learning' | 'demo'
   demoUrl?: string
   sourceUrl?: string
+  sourceLabel?: LocalizedText
 }
 
 export type ExperienceItem = {
@@ -147,12 +148,12 @@ export const siteCopy = {
     eyebrow: { en: 'Selected work', es: 'Trabajo seleccionado' },
     title: { en: 'Evidence over claims.', es: 'Evidencia antes que promesas.' },
     description: {
-      en: 'Explore a public interactive demo alongside anonymized professional cases and clearly labeled learning work.',
-      es: 'Explora una demo interactiva pública junto con casos profesionales anonimizados y proyectos de aprendizaje identificados con claridad.',
+      en: 'Explore two public interactive demos alongside anonymized professional cases and clearly labeled learning work.',
+      es: 'Explora dos demos interactivas públicas junto con casos profesionales anonimizados y proyectos de aprendizaje identificados con claridad.',
     },
     actions: {
       demo: { en: 'Open live demo', es: 'Abrir demo' },
-      source: { en: 'View source code', es: 'Ver código' },
+      source: { en: 'View demo code', es: 'Ver código de la demo' },
     },
     fields: {
       context: { en: 'Context', es: 'Contexto' },
@@ -236,37 +237,71 @@ export const capabilities: Capability[] = [
 
 export const workCases: WorkCase[] = [
   {
-    title: { en: 'Asgard Dashboard Demo', es: 'Asgard Dashboard Demo' },
-    category: { en: 'Interactive demo', es: 'Demo interactiva' },
-    status: { en: 'Live', es: 'Publicada' },
+    title: { en: 'Asgard — Interactive ETL Operations Demo', es: 'Asgard — Demo interactiva de operaciones ETL' },
+    category: { en: 'Independent project', es: 'Proyecto propio' },
+    status: { en: 'Live', es: 'En línea' },
     summary: {
-      en: 'An interactive operations console for exploring ETL runs, service health, alerts, migrations, and SQL monitoring.',
-      es: 'Una consola operativa interactiva para explorar ejecuciones ETL, estado de servicios, alertas, migraciones y monitoreo SQL.',
+      en: 'An interactive demo of the Asgard dashboard, a closed-source distributed platform I developed with AI assistance to schedule, run, and monitor Python, SQL, and SSIS ETL jobs. Explore runs, workers, alerts, migrations, and SQL monitoring from an operations console.',
+      es: 'Demo interactiva del dashboard de Asgard, una plataforma distribuida de código cerrado que desarrollé con asistencia de IA para programar, ejecutar y monitorear procesos ETL en Python, SQL y SSIS. Permite explorar cargas, workers, alertas, migraciones y monitoreo SQL desde una consola operativa.',
     },
     context: {
-      en: 'ETL operations need a clear view of daily loads, workers, failures, and the actions available to operators.',
-      es: 'La operación ETL necesita una vista clara de cargas diarias, workers, fallas y acciones disponibles para los operadores.',
+      en: 'The demo brings daily loads, capacity, services, and incidents into one view of an ETL operations workflow.',
+      es: 'La demo reúne cargas diarias, capacidad, servicios e incidentes en una vista del flujo operativo ETL.',
     },
     contribution: {
-      en: 'Built a portfolio demo that brings the main Asgard workflows together in a guided, explorable interface.',
-      es: 'Construí una demo de portafolio que reúne los principales flujos de Asgard en una interfaz guiada y explorable.',
+      en: 'I created Asgard and developed the complete application with AI assistance, from its architecture and orchestrator to the distributed workers and dashboard. I also built this interactive demo.',
+      es: 'Soy el creador de Asgard y desarrollé la aplicación completa con asistencia de IA, desde su arquitectura y orquestador hasta los workers distribuidos y el dashboard. También construí esta demo interactiva.',
     },
     approach: {
-      en: 'A static browser app with a guided tour, interactive views, and simulated actions whose state is kept in the current session.',
-      es: 'Una aplicación estática de navegador con recorrido guiado, vistas interactivas y acciones simuladas cuyo estado se conserva en la sesión actual.',
+      en: 'Asgard separates ETL scheduling, execution, and monitoring across an orchestrator, a transactional queue, and distributed workers. They run Python, SQL, and SSIS jobs in parallel with slot-based capacity limits. A Connection Factory unifies SQL Server connection profiles, while migration requests support idempotency. The dashboard integrates Power BI Report Server and provides live visibility into SQL sessions, blocking, and users, alongside audited actions to manage permissions and connections through the workers.',
+      es: 'Asgard separa la planificación, ejecución y supervisión de ETL entre un orquestador, una cola transaccional y workers distribuidos. Estos ejecutan procesos Python, SQL y SSIS en paralelo, con capacidad controlada por slots. Una Connection Factory unifica los perfiles de conexión a SQL Server, mientras que las solicitudes de migración incorporan idempotencia. El dashboard integra Power BI Report Server y permite supervisar sesiones, bloqueos y usuarios SQL en tiempo real, además de gestionar permisos y conexiones mediante acciones auditadas en los workers.',
     },
     result: {
-      en: 'Visitors can try operational flows directly in the browser and inspect the implementation in the public repository.',
-      es: 'Los visitantes pueden probar flujos operativos directamente en el navegador y revisar la implementación en el repositorio público.',
+      en: 'Visitors can filter runs, requeue a failed attempt, create a migration, inspect alerts and SQL activity, and follow the guided tour.',
+      es: 'Los visitantes pueden filtrar ejecuciones, reencolar un intento fallido, crear una migración, consultar alertas y actividad SQL, y seguir el recorrido guiado.',
     },
     evidence: {
-      en: 'Public live demo and source code. All processes, identities, events, and data are fictional; no backend services are connected.',
-      es: 'Demo pública y código fuente. Todos los procesos, identidades, eventos y datos son ficticios; no hay servicios backend conectados.',
+      en: 'The working demo and its code are available on GitHub Pages and GitHub. Its data and actions are simulated, with no connection to live services.',
+      es: 'La demo funcional y su código están disponibles en GitHub Pages y GitHub. Sus datos y acciones son simulados, sin conexión a servicios reales.',
     },
-    technologies: ['JavaScript', 'HTML', 'CSS', 'GitHub Pages'],
+    technologies: ['JavaScript', 'HTML', 'CSS', 'Python'],
     kind: 'demo',
     demoUrl: 'https://gerardoalfonso.github.io/asgard-dashboard-demo/',
     sourceUrl: 'https://github.com/GerardoAlfonso/asgard-dashboard-demo',
+  },
+  {
+    title: { en: 'Bronze Partition Console — SQL Server Partitioning', es: 'Bronze Partition Console — Particionamiento en SQL Server' },
+    category: { en: 'Independent project', es: 'Proyecto propio' },
+    status: { en: 'Public demo', es: 'Demo pública' },
+    summary: {
+      en: 'A local console for inventorying SQL Server tables, reviewing partitioning plans, and processing tables manually or through an automatic queue. A separate public demo lets visitors explore the interface with simulated data.',
+      es: 'Consola local para inventariar tablas de SQL Server, revisar planes de particionamiento y procesarlas manualmente o mediante una cola automática. Una demo pública independiente permite explorar la interfaz con datos simulados.',
+    },
+    context: {
+      en: 'Partitioning many tables requires visibility into their current state and a chance to review the exact SQL before changing database structures.',
+      es: 'Particionar numerosas tablas exige conocer su estado actual y poder revisar el SQL exacto antes de modificar las estructuras de la base de datos.',
+    },
+    contribution: {
+      en: 'I built the local console and its public browser demo, bringing table inventory, plan review, and controlled execution into one interface.',
+      es: 'Desarrollé la consola local y su demo pública para navegador, reuniendo el inventario de tablas, la revisión de planes y la ejecución controlada en una sola interfaz.',
+    },
+    approach: {
+      en: 'A Python and pyodbc backend reads SQL Server metadata and generates ordered SQL steps. The console validates each table, flags blocked cases, and processes one table at a time. Dry-run is enabled by default, and job outcomes and SQL are recorded in SQLite.',
+      es: 'Un servidor en Python y pyodbc consulta los metadatos de SQL Server y genera pasos SQL ordenados. La consola valida cada tabla, señala los casos bloqueados y procesa una tabla a la vez. El modo de prueba (DRY_RUN) está activado por defecto, y los resultados y el SQL se registran en SQLite.',
+    },
+    result: {
+      en: 'Operators can inspect a table’s plan before running it, build an automatic queue, and review each table’s recorded outcome and SQL. Real database changes require an explicitly configured local installation.',
+      es: 'Los operadores pueden inspeccionar el plan de una tabla antes de ejecutarlo, preparar una cola automática y consultar el resultado y el SQL registrados por tabla. Los cambios reales en la base de datos requieren una instalación local configurada expresamente.',
+    },
+    evidence: {
+      en: 'The repository contains the application, documentation, and tests. The GitHub Pages demo uses fictional data and simulated operations; it does not connect to SQL Server or modify a database.',
+      es: 'El repositorio contiene la aplicación, documentación y pruebas. La demo de GitHub Pages usa datos ficticios y operaciones simuladas; no se conecta a SQL Server ni modifica una base de datos.',
+    },
+    technologies: ['Python', 'pyodbc', 'SQL Server', 'SQLite', 'JavaScript', 'HTML', 'CSS'],
+    kind: 'demo',
+    demoUrl: 'https://gerardoalfonso.github.io/ConsolaParticionamientoSQL_Server/',
+    sourceUrl: 'https://github.com/GerardoAlfonso/ConsolaParticionamientoSQL_Server',
+    sourceLabel: { en: 'View source code', es: 'Ver código fuente' },
   },
   {
     title: { en: 'Azure Data Platform & Pipelines', es: 'Plataforma de Datos y Pipelines en Azure' },

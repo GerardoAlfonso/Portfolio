@@ -139,7 +139,7 @@ function WorkCard({ workCase, index, language }: { workCase: WorkCase; index: nu
               )}
               {workCase.sourceUrl && (
                 <a className="button button--ghost" href={workCase.sourceUrl} target="_blank" rel="noopener noreferrer">
-                  {t(siteCopy.work.actions.source)} <ExternalIcon />
+                  {t(workCase.sourceLabel ?? siteCopy.work.actions.source)} <ExternalIcon />
                 </a>
               )}
             </div>
