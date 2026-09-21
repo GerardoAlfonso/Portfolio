@@ -21,7 +21,9 @@ export type WorkCase = {
   result: LocalizedText
   evidence: LocalizedText
   technologies: string[]
-  kind: 'professional' | 'learning'
+  kind: 'professional' | 'learning' | 'demo'
+  demoUrl?: string
+  sourceUrl?: string
 }
 
 export type ExperienceItem = {
@@ -145,8 +147,12 @@ export const siteCopy = {
     eyebrow: { en: 'Selected work', es: 'Trabajo seleccionado' },
     title: { en: 'Evidence over claims.', es: 'Evidencia antes que promesas.' },
     description: {
-      en: 'Professional case studies are anonymized to respect confidentiality. Learning work is labeled clearly and shared without production claims.',
-      es: 'Los casos profesionales están anonimizados para respetar la confidencialidad. Los proyectos de aprendizaje se identifican con claridad y sin atribuirles resultados de producción.',
+      en: 'Explore a public interactive demo alongside anonymized professional cases and clearly labeled learning work.',
+      es: 'Explora una demo interactiva pública junto con casos profesionales anonimizados y proyectos de aprendizaje identificados con claridad.',
+    },
+    actions: {
+      demo: { en: 'Open live demo', es: 'Abrir demo' },
+      source: { en: 'View source code', es: 'Ver código' },
     },
     fields: {
       context: { en: 'Context', es: 'Contexto' },
@@ -229,6 +235,39 @@ export const capabilities: Capability[] = [
 ]
 
 export const workCases: WorkCase[] = [
+  {
+    title: { en: 'Asgard Dashboard Demo', es: 'Asgard Dashboard Demo' },
+    category: { en: 'Interactive demo', es: 'Demo interactiva' },
+    status: { en: 'Live', es: 'Publicada' },
+    summary: {
+      en: 'An interactive operations console for exploring ETL runs, service health, alerts, migrations, and SQL monitoring.',
+      es: 'Una consola operativa interactiva para explorar ejecuciones ETL, estado de servicios, alertas, migraciones y monitoreo SQL.',
+    },
+    context: {
+      en: 'ETL operations need a clear view of daily loads, workers, failures, and the actions available to operators.',
+      es: 'La operación ETL necesita una vista clara de cargas diarias, workers, fallas y acciones disponibles para los operadores.',
+    },
+    contribution: {
+      en: 'Built a portfolio demo that brings the main Asgard workflows together in a guided, explorable interface.',
+      es: 'Construí una demo de portafolio que reúne los principales flujos de Asgard en una interfaz guiada y explorable.',
+    },
+    approach: {
+      en: 'A static browser app with a guided tour, interactive views, and simulated actions whose state is kept in the current session.',
+      es: 'Una aplicación estática de navegador con recorrido guiado, vistas interactivas y acciones simuladas cuyo estado se conserva en la sesión actual.',
+    },
+    result: {
+      en: 'Visitors can try operational flows directly in the browser and inspect the implementation in the public repository.',
+      es: 'Los visitantes pueden probar flujos operativos directamente en el navegador y revisar la implementación en el repositorio público.',
+    },
+    evidence: {
+      en: 'Public live demo and source code. All processes, identities, events, and data are fictional; no backend services are connected.',
+      es: 'Demo pública y código fuente. Todos los procesos, identidades, eventos y datos son ficticios; no hay servicios backend conectados.',
+    },
+    technologies: ['JavaScript', 'HTML', 'CSS', 'GitHub Pages'],
+    kind: 'demo',
+    demoUrl: 'https://gerardoalfonso.github.io/asgard-dashboard-demo/',
+    sourceUrl: 'https://github.com/GerardoAlfonso/asgard-dashboard-demo',
+  },
   {
     title: { en: 'Azure Data Platform & Pipelines', es: 'Plataforma de Datos y Pipelines en Azure' },
     category: { en: 'Professional case', es: 'Caso profesional' },

@@ -774,6 +774,10 @@ a {
   background: linear-gradient(120deg, rgba(23, 26, 57, 0.88), rgba(7, 17, 31, 0.9));
 }
 
+.project-card--demo {
+  border-color: rgba(85, 230, 255, 0.38);
+}
+
 .project-card--learning:hover {
   border-color: rgba(140, 124, 255, 0.5);
 }
@@ -820,6 +824,13 @@ a {
   color: #acbdca;
   font-size: 1rem;
   line-height: 1.75;
+}
+
+.project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 .case-study {

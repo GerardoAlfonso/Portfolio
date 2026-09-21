@@ -130,6 +130,20 @@ function WorkCard({ workCase, index, language }: { workCase: WorkCase; index: nu
           </div>
           <h3>{t(workCase.title)}</h3>
           <p className="project-summary">{t(workCase.summary)}</p>
+          {(workCase.demoUrl || workCase.sourceUrl) && (
+            <div className="project-card__actions">
+              {workCase.demoUrl && (
+                <a className="button button--primary" href={workCase.demoUrl} target="_blank" rel="noopener noreferrer">
+                  {t(siteCopy.work.actions.demo)} <ExternalIcon />
+                </a>
+              )}
+              {workCase.sourceUrl && (
+                <a className="button button--ghost" href={workCase.sourceUrl} target="_blank" rel="noopener noreferrer">
+                  {t(siteCopy.work.actions.source)} <ExternalIcon />
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
         <dl className="case-study">
